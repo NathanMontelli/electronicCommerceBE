@@ -13,11 +13,11 @@ ProductTag.init({
     },
     product_id: {
       type: DataTypes.INTEGER,
-      references: {model: 'product', key: 'id'}
+      references: {model: 'Product', key: 'id'}
     },
     tag_id: {
       type: DataTypes.INTEGER,
-      references: {model: 'tag', key: 'id'}
+      references: {model: 'Tag', key: 'id'}
     }
   }, {
     sequelize,
