@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const req = require('express/lib/request')
-const { Product, Category, Tag, ProductTag } = require('../../models')
+const { Product, Category, Tag, ProductTag } = require('../models')
 
 // The `/api/products` endpoint
 
@@ -94,7 +94,7 @@ router.put('/products/:id', (req, res) => {
     })
 })
 
-router.delete('/products/:id', ({ params: { id }}, res) {
+router.delete('/products/:id', async function ({ params: { id }}, res) {
   const products = await Product.destroy({ where: { id } })
   res.status(200).json(products)
   // delete one product by its `id` value

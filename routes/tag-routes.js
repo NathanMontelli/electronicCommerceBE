@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Tag, Product, ProductTag } = require('../../models')
+const { Tag, Product, ProductTag } = require('../models')
 
 // The `/api/tags` endpoint
 
@@ -24,7 +24,7 @@ router.post('/tags', async function (req, res) {
 })
 
 router.put('/tags/:id', async function ({params: { id } }, res) {
-  const tags = await Tag.update(req.body, where: { id })
+  const tags = await Tag.update(req.body, {where: { id } })
 res.status(200).json(tags)
   // update a tag's name by its `id` value
 })
