@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const req = require('express/lib/request')
 const res = require('express/lib/response')
 const { Category, Product } = require('../models')
 
@@ -24,8 +25,8 @@ router.post('/categories', async function (req, res) {
   // create a new category
 })
 
-router.put('/categories/:id', async function ({ params: { id } }, res) {
-const categories = await Category.update(req.body, {where: { id }})
+router.put('/categories/:id', async function (req, res) {
+const categories = await Category.update(req.body, {where: { id: req.params.id }})
 res.status(200).json(categories)
   // update a category by its `id` value
 })
